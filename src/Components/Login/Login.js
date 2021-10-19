@@ -1,0 +1,108 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import './Login.css'
+import { useHistory, useLocation } from "react-router";
+import { useForm } from "react-hook-form";
+
+const Login = () => {
+
+  const {googleSignIn, setUser, setError, setIsLoading, newUserLogin} = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+
+  const { from } = location.state || { from: { pathname: "/" } };
+
+  const handlerGoogleSignIn = () => {
+      googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        history.push(from)
+        console.log('hello')
+      })
+      .finally(() => setIsLoading(false))
+  }
+
+  //login with email and password
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+  const onSubmit = data => {
+    const {email, password} = data;
+    console.log(email, password);
+    newUserLogin(email, password)
+    .then(result => {
+      const user = result.user;
+      setUser(user)
+      history.push(from)
+      console.log(user);
+    })
+    .catch((error) => {
+      console.log(error.message)
+    });
+  };
+  
+  return (
+    <div className="container d-flex justify-content-center">
+      <div>
+        <div className="card my-5 shadow-lg" style={{ width: "38rem" }}>
+          <div className="card-body">
+            <h3 className="card-title text-center">Log In</h3>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  {...register("email")}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  {...register("password", { required: true })}
+                />
+                {errors.password && <span className="text-danger">This field is required</span>}
+              </div>
+              <div className="d-grid">
+                <button type="submit" className="btn btn-warning">
+                  Submit
+                </button>
+              </div>
+              <div className="form-text">
+                Not a member? <Link to="/register">Register Now</Link>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div className="divider mb-4">
+            <hr /> <h5>or</h5> <hr />
+        </div>
+
+        <div className="d-grid gap-2 col-6 mx-auto mb-5">
+          <button onClick={handlerGoogleSignIn} className="btn btn-outline-dark" type="button">
+            <span className="me-2"><i className="fab fa-google"></i></span>
+            Login with Google
+          </button>
+          <button className="btn btn-outline-dark fb" type="button">
+            <span className="me-2 fb-icon"><i className="fab fa-facebook-f"></i></span>
+            Login with Facebook
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
