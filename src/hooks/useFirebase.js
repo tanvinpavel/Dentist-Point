@@ -32,7 +32,7 @@ const useFirebase = () => {
     .catch(() => {});
   }
 
-  const newAccount = (email, password, name, from) => {
+  const newAccount = (email, password, name) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
