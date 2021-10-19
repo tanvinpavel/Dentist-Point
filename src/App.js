@@ -10,6 +10,7 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Footer from './Components/Shared/Footer/Footer';
 import Header from './Components/Shared/Header/Header';
 import ServiceDetails from './Components/ServiceDetails/ServiceDetails';
+import About from './Components/About/About';
 
 function App() {
   return (
@@ -42,6 +43,10 @@ function App() {
 
           <PrivateRoute path="/details/:servicesId">
             <ServiceDetails></ServiceDetails>
+          </PrivateRoute>
+
+          <PrivateRoute path="/about">
+            <About></About>
           </PrivateRoute>
 
           <Route path="*">
