@@ -3,24 +3,55 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import './Register.css'
 import useAuth from "../../hooks/useAuth";
+import {updateProfile, getAuth} from "firebase/auth";
+import { useHistory, useLocation } from "react-router";
 
 const Login = () => {
 
-  const {newAccount, error} = useAuth();
+  const {newAccount, error, setUser, setError, setIsLoading} = useAuth();
+
   const { register, handleSubmit, formState: { errors }} = useForm();
+  const auth = getAuth();
+  const history = useHistory();
+  const location = useLocation();
+
   const [validationError, setValidationError] = useState('');
   const [passwordValidation, setPasswordValidation] = useState('');
 
+  const { from } = location.state || { from: { pathname: "/" } };
 
+  console.log(from)
+
+  //login with email and password
   const onSubmit = data => {
     const {name,email, password, reEnterPass} = data;
 
-    console.log(email, password, reEnterPass)
+
+    const setUserName = (name) => {
+      updateProfile(auth.currentUser, { displayName: name })
+      .then((result) => {
+        console.log(auth.currentUser)
+        console.log(result.user)
+      })
+      .catch(() => {});
+    }
+
     if(password === reEnterPass){
       setValidationError('')
       if(password.length >= 6){
         setPasswordValidation('')
-        newAccount(email, password, name)
+
+        newAccount(email, password)
+        .then((result) => {
+          const user = result.user;
+          setUser(user);
+          setUserName(name);
+          history.push(from)
+          setError('');
+
+          window.location.reload();
+        })
+        .finally(() => setIsLoading(false));
       }else{
         setPasswordValidation('Password must be at last 6 character')
       }
@@ -29,7 +60,6 @@ const Login = () => {
     }
   };
 
-  // console.log(watch("example"));
 
   return (
     <div className="container d-flex justify-content-center">

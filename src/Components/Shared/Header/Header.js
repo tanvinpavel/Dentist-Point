@@ -22,11 +22,11 @@ const Header = () => {
                     </div>
 
                     
-
+                    {console.log(user.displayName)}
                     { user.uid ? <span className="navbar-text">
                         <div className="navbar-nav me-lg-5">
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{user.displayName}</a>
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span style={{"width" : "100px","textAlign": "end","display": "inline-block"}}>{user.displayName}</span></a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><span onClick={userSignOut} className="dropdown-item text-center log-pointer">Log Out</span></li>
                                     </ul>

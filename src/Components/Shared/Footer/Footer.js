@@ -36,22 +36,22 @@ const Footer = () => {
                       <h6 className="text-uppercase fw-bold">Social</h6>
                       <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{"width": "60px","backgroundColor": "rgb(253 253 253)", "height": "2px"}} ></hr>
                       <div>
-                        <a href="https://www.facebook.com/moinuddin.niloy/" className="text-white mx-2">
+                        <a target="blank" href="https://www.facebook.com/tanvin.pavel.1/" className="text-white mx-2">
                           <i className="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.facebook.com/moinuddin.niloy/" className="text-white mx-2">
+                        <a href="/home" className="text-white mx-2">
                           <i className="fab fa-twitter"></i>
                         </a>
                         <a href="https://www.google.com/" className="text-white mx-2">
                           <i className="fab fa-google"></i>
                         </a>
-                        <a href="https://www.instagram.com/moin_uddin_minhaj321/" className="text-white mx-2">
+                        <a href="/home" className="text-white mx-2">
                           <i className="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/moin-uddin-b83b30215/" className="text-white mx-2">
+                        <a href="/home" className="text-white mx-2">
                           <i className="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://github.com/" className="text-white mx-2">
+                        <a href="/home" className="text-white mx-2">
                           <i className="fab fa-github"></i>
                         </a>
                       </div>

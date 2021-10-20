@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 
 const Login = () => {
 
-  const {googleSignIn, setUser, setError, setIsLoading, newUserLogin} = useAuth();
+  const {googleSignIn, setUser, setIsLoading, newUserLogin} = useAuth();
   const history = useHistory();
   const location = useLocation();
 
@@ -26,11 +26,11 @@ const Login = () => {
 
   //login with email and password
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = data => {
     const {email, password} = data;
-    console.log(email, password);
+    // console.log(email, password);
     newUserLogin(email, password)
     .then(result => {
       const user = result.user;
@@ -38,9 +38,7 @@ const Login = () => {
       history.push(from)
       console.log(user);
     })
-    .catch((error) => {
-      console.log(error.message)
-    });
+    .finally(() => setIsLoading(false));
   };
   
   return (
