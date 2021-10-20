@@ -11,14 +11,15 @@ const Login = () => {
   const [validationError, setValidationError] = useState('');
   const [passwordValidation, setPasswordValidation] = useState('');
 
-  console.log(error)
 
   const onSubmit = data => {
     const {name,email, password, reEnterPass} = data;
 
     console.log(email, password, reEnterPass)
     if(password === reEnterPass){
+      setValidationError('')
       if(password.length >= 6){
+        setPasswordValidation('')
         newAccount(email, password, name)
       }else{
         setPasswordValidation('Password must be at last 6 character')
@@ -72,6 +73,7 @@ const Login = () => {
                   {...register("password", { required: true })}
                 />
                 {errors.password && <span className="text-danger">This field is required.</span>}
+                {validationError && <span className="text-danger">{validationError}</span>}
               </div>
               <div className="mb-3">
                 <label htmlFor="exampleInputPassword2" className="form-label">

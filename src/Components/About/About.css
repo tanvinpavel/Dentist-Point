@@ -1,0 +1,23 @@
+.logo-resize{
+    padding: 10% 40%;
+    background: rebeccapurple;
+    height: 160px;
+}
+
+.card-hover:hover{
+    
+}
+
+@media screen and (max-width: 500px) {
+    .logo-resize{
+        padding: 12% 38%;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .logo-resize{
+        padding: 12% 38%;
+        height: 100px;
+    }
+}

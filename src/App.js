@@ -5,12 +5,12 @@ import NotFound from './Components/NotFound/NotFound';
 import Home from './Components/Home/Home/Home';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
-import Services from './Components/Services/Services';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Footer from './Components/Shared/Footer/Footer';
 import Header from './Components/Shared/Header/Header';
 import ServiceDetails from './Components/ServiceDetails/ServiceDetails';
 import About from './Components/About/About';
+import Doctor from './Components/Doctor/Doctor';
 
 function App() {
   return (
@@ -37,8 +37,8 @@ function App() {
             <Register></Register>
           </Route>
 
-          <PrivateRoute path="/services">
-            <Services></Services>
+          <PrivateRoute path="/doctors">
+            <Doctor></Doctor>
           </PrivateRoute>
 
           <PrivateRoute path="/details/:servicesId">

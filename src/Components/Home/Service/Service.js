@@ -5,7 +5,7 @@ const Service = (props) => {
     const {title, img, details, id} = props.data;
     return (
         <div>
-            <div className="col h-100">
+            <div className="col h-100 shadow">
                 <div className="card text-center h-100">
                     <img src={img} className="card-img-top" style={{"height": "300px", "objectFit": "cover"}} alt="..."/>
                     <div className="card-body">
