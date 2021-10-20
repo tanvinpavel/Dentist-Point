@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  FacebookAuthProvider,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeFirebase from "../firebase/firebase.init";
@@ -15,6 +16,7 @@ initializeFirebase();
 const useFirebase = () => {
 
   const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
   const auth = getAuth();
 
   const [user, setUser] = useState({});
@@ -40,6 +42,11 @@ const useFirebase = () => {
   const newUserLogin = (email, password) => {
     setIsLoading(true);
     return signInWithEmailAndPassword(auth, email, password)
+  }
+
+  const facebookLogin = () => {
+    setIsLoading(true);
+    return signInWithPopup(auth, facebookProvider)
   }
   
   const userSignOut = () => {
@@ -68,6 +75,7 @@ const useFirebase = () => {
     setIsLoading,
     newAccount,
     newUserLogin,
+    facebookLogin
   };
 };
 

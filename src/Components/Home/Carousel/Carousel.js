@@ -34,28 +34,25 @@ const Carousel = () => {
         <div className="carousel-inner">
           <div className="carousel-item parent active">
             <img src="https://i.ibb.co/TWVBxtq/slider-3.jpg" className="d-block w-100 img-resize black-overlay" alt="..." />
-            <div className="carousel-caption mb-5 d-none d-md-block">
-              <h1>First slide label</h1>
+            <div className="carousel-caption mb-3 d-none d-md-block">
+              <h1>Welcome to a Family</h1>
               <p>
-                Some representative placeholder content for the first slide.
+              Welcome to Datobbo Dental represents everything going to dentist necessary. We have upgraded your dreaded dentist appointment and transformed it into a relaxing.
               </p>
             </div>
           </div>
           <div className="carousel-item parent">
             <img src="https://i.ibb.co/5FZfLyr/Interior-view-of-operating-room-in-hospital.jpg" className="d-block w-100 img-resize black-overlay" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
-              <h1>Second slide label</h1>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
+              <h1>Request your appointment <br /> and start your smile makeover!</h1>
             </div>
           </div>
           <div className="carousel-item parent">
             <img src="https://i.ibb.co/C7LGrbh/slider-2.jpg" className="d-block w-100 img-resize black-overlay" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
-              <h1>Third slide label</h1>
+              <h1>Experienced Dentist</h1>
               <p>
-                Some representative placeholder content for the third slide.
+                Dr. Harrie believes in providing her patients with more than just world class dental care.
               </p>
             </div>
           </div>

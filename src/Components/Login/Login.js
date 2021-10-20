@@ -7,21 +7,41 @@ import { useForm } from "react-hook-form";
 
 const Login = () => {
 
-  const {googleSignIn, setUser, setIsLoading, newUserLogin} = useAuth();
+  const {googleSignIn, setUser, setIsLoading, newUserLogin, setError, error, facebookLogin} = useAuth();
   const history = useHistory();
   const location = useLocation();
 
   const { from } = location.state || { from: { pathname: "/" } };
+
+  //google sign in
 
   const handlerGoogleSignIn = () => {
       googleSignIn()
       .then((result) => {
         const user = result.user;
         setUser(user);
+        setError('');
         history.push(from)
-        console.log('hello')
       })
       .finally(() => setIsLoading(false))
+      .catch((error) => { setError(error.message)})
+  }
+
+  //facebook sign in
+
+  const handlerFacebook = () => {
+    facebookLogin()
+    .then((result) => {
+      const user = result.user;
+      setUser(user);
+      setError('');
+      history.push(from);
+    })
+    .finally(() => setIsLoading(false))
+    .catch((error) => {
+      const errorMessage = error.message;
+      setError(errorMessage);
+    });
   }
 
   //login with email and password
@@ -30,7 +50,7 @@ const Login = () => {
 
   const onSubmit = data => {
     const {email, password} = data;
-    // console.log(email, password);
+
     newUserLogin(email, password)
     .then(result => {
       const user = result.user;
@@ -44,6 +64,7 @@ const Login = () => {
   return (
     <div className="container d-flex justify-content-center">
       <div>
+        {error && <p className="text-danger text-center mt-4">{error.slice(10)}</p>}
         <div className="card my-5 shadow-lg" style={{ width: "38rem" }}>
           <div className="card-body">
             <h3 className="card-title text-center">Log In</h3>
@@ -93,7 +114,7 @@ const Login = () => {
             <span className="me-2"><i className="fab fa-google"></i></span>
             Login with Google
           </button>
-          <button className="btn btn-outline-dark fb" type="button">
+          <button onClick={handlerFacebook} className="btn btn-outline-dark fb" type="button">
             <span className="me-2 fb-icon"><i className="fab fa-facebook-f"></i></span>
             Login with Facebook
           </button>

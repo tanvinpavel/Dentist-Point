@@ -12,7 +12,7 @@ const Footer = () => {
                 
                   <div className="col-md-3 col-lg-4 text-white col-xl-3 mx-auto mb-4">
                   
-                    <h6 className="text-uppercase fw-bold"><img style={{height:50}} src="" alt="" />Dental Point</h6>
+                    <h6 className="text-uppercase fw-bold"><img style={{height:50}} src="" alt="" /><i className="fas fa-tooth"></i> Dental Point</h6>
                     <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{"width": "300px","backgroundColor": "rgb(253 253 253)", "height": "2px"}} ></hr>
                     <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{"backgroundColor": "#6351ce"}} />
                     <p>Since 1998, Dental Point has been proud to combine modern techniques and high-tech equipment. Dr. John Dae, Micha and his team deliver a personalized and comfortable dental care experience unlike any other Mason dentist.</p>
@@ -51,7 +51,7 @@ const Footer = () => {
                         <a href="/home" className="text-white mx-2">
                           <i className="fab fa-linkedin"></i>
                         </a>
-                        <a href="/home" className="text-white mx-2">
+                        <a href="https://github.com/tanvinpavel" className="text-white mx-2">
                           <i className="fab fa-github"></i>
                         </a>
                       </div>

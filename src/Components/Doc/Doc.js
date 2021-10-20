@@ -4,8 +4,8 @@ const Doc = (props) => {
     const {name, degree, medical, time, img} = props.data;
     return (
         <div>
-            <div className="col h-100 shadow">
-                <div className="card h-100">
+            <div className="col shadow">
+                <div className="card border-0">
                     <img src={img} className="card-img-top" style={{"height": "300px"}} alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title">{name}</h5>

@@ -8,7 +8,7 @@ import { useHistory, useLocation } from "react-router";
 
 const Login = () => {
 
-  const {newAccount, error, setUser, setError, setIsLoading} = useAuth();
+  const {newAccount, error, setUser, setError, setIsLoading, facebookLogin, googleSignIn} = useAuth();
 
   const { register, handleSubmit, formState: { errors }} = useForm();
   const auth = getAuth();
@@ -20,7 +20,36 @@ const Login = () => {
 
   const { from } = location.state || { from: { pathname: "/" } };
 
-  console.log(from)
+  //google sign in
+
+  const handlerGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        setError('');
+        history.push(from)
+      })
+      .finally(() => setIsLoading(false))
+      .catch((error) => { setError(error.message)})
+  }
+
+  //facebook sign in
+
+  const handlerFacebook = () => {
+    facebookLogin()
+    .then((result) => {
+      const user = result.user;
+      setUser(user);
+      setError('');
+      history.push(from);
+    })
+    .finally(() => setIsLoading(false))
+    .catch((error) => {
+      const errorMessage = error.message;
+      setError(errorMessage);
+    });
+  }
 
   //login with email and password
   const onSubmit = data => {
@@ -33,7 +62,7 @@ const Login = () => {
         console.log(auth.currentUser)
         console.log(result.user)
       })
-      .catch(() => {});
+      .catch((error) => { setError(error.message) });
     }
 
     if(password === reEnterPass){
@@ -51,7 +80,8 @@ const Login = () => {
 
           window.location.reload();
         })
-        .finally(() => setIsLoading(false));
+        .finally(() => setIsLoading(false))
+        .catch((error) => { setError(error.message) });
       }else{
         setPasswordValidation('Password must be at last 6 character')
       }
@@ -64,6 +94,7 @@ const Login = () => {
   return (
     <div className="container d-flex justify-content-center">
       <div>
+        {error && <p className="text-danger text-center mt-4">{error.slice(10)}</p>}
         <div className="card my-5 shadow-lg" style={{ width: "38rem" }}>
           <div className="card-body">
             <h3 className="card-title text-center">Sign up</h3>
@@ -127,9 +158,6 @@ const Login = () => {
               <div className="form-text">
                 Already registered? <Link to="/login">Log in</Link>
               </div>
-              {error && <div className="form-text text-center text-danger">
-                <span>{error}</span>
-              </div>}
             </form>
           </div>
         </div>
@@ -139,11 +167,11 @@ const Login = () => {
         </div>
 
         <div className="d-grid gap-2 col-6 mx-auto mb-5">
-          <button className="btn btn-outline-dark" type="button">
+          <button onClick={handlerGoogleSignIn} className="btn btn-outline-dark" type="button">
             <span className="me-2"><i className="fab fa-google"></i></span>
             Login with Google
           </button>
-          <button className="btn btn-outline-dark fb" type="button">
+          <button onClick={handlerFacebook} className="btn btn-outline-dark fb" type="button">
             <span className="me-2 fb-icon"><i className="fab fa-facebook-f"></i></span>
             Login with Facebook
           </button>

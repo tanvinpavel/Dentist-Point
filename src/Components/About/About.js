@@ -17,11 +17,11 @@ const About = () => {
                 <section className="pb-5">
                     <div className="text-center mb-3">
                         <h2>Patient Focused Approach</h2>
-                        <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{"width": "50%", "height": "4px"}} ></hr>
+                        <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{"width": "35%", "height": "4px"}} ></hr>
                     </div>
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-5 mx-5">
-                        <div className="col card-hover">
-                            <div className="card h-100">
+                        <div className="col">
+                            <div className="card h-100 card-hover">
                                 <img src="https://i.ibb.co/nBWcw1L/download-1.png" className="card-img-top logo-resize" alt="..."/>
                                 <div className="card-body">
                                     <h5 className="card-title text-center">Consolation</h5>
@@ -29,17 +29,19 @@ const About = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col card-hover">
-                            <div className="card h-100">
-                                <img src="https://i.ibb.co/XpK0tV0/download-2.png" className="card-img-top logo-resize" alt="..."/>
+                        <div className="col">
+                            <div className="card h-100 card-hover">
+                                <div>
+                                    <img src="https://i.ibb.co/XpK0tV0/download-2.png" className="card-img-top logo-resize" alt="..."/>
+                                </div>
                                 <div className="card-body">
                                     <h5 className="card-title text-center">Familiarity</h5>
                                     <p className="card-text">Smiling comes naturally to Dr. Harrie, author of ‘Donto’. He has embraced Cosmetic Dentistry and has redesigned the smiles for thev thousands of patients.</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="col card-hover">
-                            <div className="card h-100">
+                        <div className="col">
+                            <div className="card h-100 card-hover">
                                 <img src="https://i.ibb.co/QQ1kdvn/download.png" className="card-img-top logo-resize" alt="..."/>
                                 <div className="card-body">
                                     <h5 className="card-title text-center">Outcome</h5>

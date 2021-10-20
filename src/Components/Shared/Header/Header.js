@@ -1,28 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import React from 'react';
 import './Header.css'
 
 const Header = () => {
 
-    const {user, userSignOut} = useAuth()
+    const {user, userSignOut} = useAuth();
+
+    const active = { fontWeight: "bold", color: "#rgba(255,255,255,.75)" }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/home">Dental Point</Link>
+                <Link className="navbar-brand ms-md-3" to="/home"><i className="fas fa-tooth me-1"></i> Dental Point</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="mx-auto navbar-nav">
-                        <Link className="nav-link active" to="/home">Home</Link>
-                        <Link className="nav-link" to="/doctors">Doctors</Link>
-                        <Link className="nav-link" to="/about">About Us</Link>
+                        <NavLink className="nav-link" activeStyle={active} to="/home">Home</NavLink>
+                        <NavLink className="nav-link" activeStyle={active} to="/doctors">Doctors</NavLink>
+                        <NavLink className="nav-link" activeStyle={active} to="/about">About Us</NavLink>
                     </div>
 
-                    
-                    {console.log(user.displayName)}
                     { user.uid ? <span className="navbar-text">
                         <div className="navbar-nav me-lg-5">
                             <li className="nav-item dropdown">
